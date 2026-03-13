@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - StaySummary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #333;
+            background-color: #fafafa;
+            line-height: 1.7;
+        }
+
+        header {
+            background-color: #FF5A5F;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 0 24px 60px;
+        }
+
+        section {
+            margin-bottom: 36px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #FF5A5F;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #ffe0e1;
+        }
+
+        p {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        ul {
+            margin: 8px 0 16px 24px;
+            font-size: 15px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        a {
+            color: #FF5A5F;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background-color: #fff4f4;
+            border-left: 4px solid #FF5A5F;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 13px;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>StaySummary - Airbnb Review Summarizer</h1>
+        <p>Privacy Policy</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Introduction</h2>
+            <p>StaySummary is a Chrome extension that summarizes Airbnb listing reviews using AI. We are committed to protecting your privacy. This policy explains what data the extension accesses, how it is handled, and what third-party services are involved.</p>
+            <div class="highlight">
+                <strong>In short:</strong> We do not collect, store, or transmit any personal information to our servers. All data stays in your browser.
+            </div>
+        </section>
+
+        <section>
+            <h2>Data We Collect</h2>
+            <ul>
+                <li><strong>Anthropic API Key</strong> &mdash; If you provide your own API key, it is stored locally in your browser using <code>chrome.storage.sync</code>. It is never sent to our servers.</li>
+                <li><strong>Monthly Usage Count</strong> &mdash; A simple counter tracking how many summaries you have generated in the current month. This is stored locally via <code>chrome.storage.sync</code> for the sole purpose of enforcing usage limits.</li>
+            </ul>
+            <p>We do <strong>not</strong> collect any personal information such as your name, email address, browsing history, or any other identifying data.</p>
+        </section>
+
+        <section>
+            <h2>External Services</h2>
+            <p>StaySummary interacts with the following third-party services:</p>
+            <ul>
+                <li><strong>Airbnb's API</strong> &mdash; Used to fetch publicly available listing reviews. No user data is sent to Airbnb through this extension.</li>
+                <li><strong>Anthropic's Claude API</strong> &mdash; Review text from Airbnb listings is sent to Anthropic's API for AI-powered summarization. This communication is governed by <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's Privacy Policy</a>.</li>
+                <li><strong>ExtensionPay / Stripe</strong> &mdash; Used for payment processing. Payment information is handled entirely by Stripe and is governed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe's Privacy Policy</a>. We never have access to your payment card details.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Data Storage</h2>
+            <ul>
+                <li>All extension data is stored <strong>locally</strong> in your browser using Chrome's built-in storage API (<code>chrome.storage.sync</code>).</li>
+                <li>Your API key and usage data sync across your signed-in Chrome browser instances via Google's own sync infrastructure.</li>
+                <li><strong>We do not operate any servers that store your data.</strong></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tracking, Analytics &amp; Cookies</h2>
+            <div class="highlight">
+                StaySummary does <strong>not</strong> use tracking scripts, analytics services, cookies, or any form of behavioral monitoring. We do not sell, share, or monetize your data in any way.
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Rights</h2>
+            <p>Since all data is stored locally in your browser, you have full control over it at all times. You can:</p>
+            <ul>
+                <li>View or delete your stored data through the extension's settings.</li>
+                <li>Remove all extension data by uninstalling StaySummary from Chrome.</li>
+                <li>Revoke your Anthropic API key at any time through your Anthropic account.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated revision date. Continued use of the extension after changes constitutes acceptance of the revised policy.</p>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <p>If you have any questions or concerns about this privacy policy, please contact us at:</p>
+            <p><a href="mailto:staysummary.extension@gmail.com">staysummary.extension@gmail.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Last updated: March 2026</p>
+        <p>&copy; 2026 StaySummary. All rights reserved.</p>
+    </footer>
+</body>
+</html>
