@@ -144,78 +144,30 @@
 
         <section>
             <h2>What Data the Extension Accesses</h2>
-            <p>When you click &ldquo;Summarize&rdquo; on a supported listing page, the extension reads the following information directly from that page:</p>
-            <ul>
-                <li><strong>Listing reviews</strong> &mdash; Guest review text visible on the page (or fetched via the platform&rsquo;s public API for Airbnb).</li>
-                <li><strong>Listing title and nightly price</strong> &mdash; Used to provide context in the AI summary.</li>
-                <li><strong>Listing coordinates (latitude/longitude)</strong> &mdash; Extracted from page metadata or map links to enable neighborhood and safety analysis.</li>
-            </ul>
-            <p>None of this data is tied to your identity. The extension does <strong>not</strong> access your account on any booking platform, your search history, or any personal information.</p>
+            <p>When you click &ldquo;Summarize&rdquo; on a supported listing page, the extension reads publicly available information from that page to generate your summary &mdash; such as review content, listing details, and location context. None of this data is tied to your identity.</p>
+            <p>The extension does <strong>not</strong> access your account on any booking platform, your browsing history, or any personal information.</p>
         </section>
 
         <section>
             <h2>What Data Is Stored Locally</h2>
-            <p>The extension stores the following data in your browser only, using Chrome&rsquo;s built-in storage APIs:</p>
+            <p>The extension stores a small amount of data in your browser to provide its features:</p>
             <ul>
-                <li><strong>Cached summaries</strong> &mdash; Generated summaries are cached locally for 24 hours to avoid redundant API calls. Stored in <code>chrome.storage.local</code>.</li>
-                <li><strong>Monthly usage count</strong> &mdash; A counter tracking how many summaries you have generated in the current billing month, used to enforce the free tier limit. Stored in <code>chrome.storage.local</code>.</li>
-                <li><strong>Compare mode list</strong> &mdash; Listings you have saved for side-by-side comparison. Stored in <code>chrome.storage.local</code>.</li>
-                <li><strong>Onboarding state</strong> &mdash; Whether you have seen the first-time welcome overlay. Stored in <code>chrome.storage.local</code>.</li>
-                <li><strong>Anthropic API key</strong> (optional) &mdash; If you choose to provide your own Anthropic API key, it is stored in <code>chrome.storage.sync</code> and synced across your signed-in Chrome instances via Google&rsquo;s own encrypted infrastructure. It is never sent to our servers.</li>
+                <li><strong>Cached summaries</strong> &mdash; Summaries are temporarily cached to improve performance. Cache expires automatically.</li>
+                <li><strong>Usage count</strong> &mdash; A counter used solely to manage your plan&rsquo;s monthly limit.</li>
+                <li><strong>Saved listings</strong> &mdash; Any listings you choose to save for comparison.</li>
+                <li><strong>Preferences</strong> &mdash; Basic settings such as whether you&rsquo;ve completed onboarding.</li>
             </ul>
             <p>All locally stored data can be removed by uninstalling the extension.</p>
         </section>
 
         <section>
             <h2>Third-Party Services</h2>
-            <p>When generating a summary, the extension communicates with the following external services. No personal information (name, email, account details) is ever included in these requests.</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Service</th>
-                        <th>Data Sent</th>
-                        <th>Purpose</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>StaySummary API</strong><br>(Cloudflare Workers)</td>
-                        <td>Review text, listing title, nightly price, neighborhood data, browser language</td>
-                        <td>Backend proxy that forwards data to Anthropic&rsquo;s Claude API and returns the AI-generated summary. No data is persisted on this server.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Anthropic Claude API</strong></td>
-                        <td>Review text, listing title, nightly price, neighborhood context, browser language</td>
-                        <td>AI-powered summarization of reviews and neighborhood analysis. Governed by <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic&rsquo;s Privacy Policy</a>.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>OpenStreetMap Overpass API</strong></td>
-                        <td>Listing latitude &amp; longitude</td>
-                        <td>Fetches nearby points of interest (restaurants, transit, shops, safety infrastructure) for the neighborhood analysis tab. This is a public, free API.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Nominatim (OpenStreetMap)</strong></td>
-                        <td>Listing latitude &amp; longitude</td>
-                        <td>Reverse geocoding to determine the listing&rsquo;s country and US state (required for crime data lookups). This is a public, free API.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>FBI Crime Data API</strong><br>(api.usa.gov)</td>
-                        <td>US state abbreviation</td>
-                        <td>Fetches publicly available state-level crime statistics for US listings only, used in the safety score. This is a public US government API.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Airbnb Public API</strong></td>
-                        <td>Listing ID (from page URL)</td>
-                        <td>Fetches publicly available reviews for Airbnb listings. No user credentials or account data are used.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>ExtensionPay / Stripe</strong></td>
-                        <td>Payment details (handled entirely by Stripe)</td>
-                        <td>Subscription payment processing for the premium plan. We never have access to your payment card details. Governed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe&rsquo;s Privacy Policy</a>.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>StaySummary uses a small number of trusted third-party services to deliver its features. No personal information (name, email, account details) is ever shared with these services.</p>
+            <ul>
+                <li><strong>AI provider</strong> &mdash; Listing content is sent to an AI service to generate summaries. No data is retained after processing.</li>
+                <li><strong>Location &amp; mapping services</strong> &mdash; General location data from the listing page is used to provide neighborhood context. Only publicly available data sources are used.</li>
+                <li><strong>Payment processor</strong> &mdash; Subscription payments are handled by Stripe. We never have access to your payment card details. Governed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe&rsquo;s Privacy Policy</a>.</li>
+            </ul>
         </section>
 
         <section>
@@ -230,8 +182,7 @@
             <p>Since all personal data is stored locally in your browser, you have full control at all times:</p>
             <ul>
                 <li>Remove all extension data by uninstalling StaySummary from Chrome.</li>
-                <li>Clear cached summaries through Chrome&rsquo;s extension storage settings.</li>
-                <li>Revoke your Anthropic API key at any time through your <a href="https://console.anthropic.com" target="_blank" rel="noopener">Anthropic account</a>.</li>
+                <li>Clear cached data through Chrome&rsquo;s extension storage settings.</li>
             </ul>
         </section>
 
